@@ -68,7 +68,7 @@ function animateLeft(content){
         scrollTrigger: (content,{
             scroller: "body",
             trigger: content,
-            start: "top 60%",
+            start: "top 80%",
             end: "top 40%",
             scrub: 1
         })
@@ -81,8 +81,9 @@ function animateRight(content){
         scrollTrigger: (content,{
             scroller: "body",
             trigger: content,
-            start: "top 60%",
+            start: "top 90%",
             end: "top 40%",
+            markers: true,
             scrub: 1
         })
     })
