@@ -7,6 +7,27 @@ function clutterMaking(kuchdo) {
     })
     kuchdo.innerHTML = clutter;
 }
+function locomotiveAnimation(){
+    gsap.registerPlugin(ScrollTrigger);
+  
+  const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true
+  });
+  locoScroll.on("scroll", ScrollTrigger.update);
+  ScrollTrigger.scrollerProxy("#main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  },
+  getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+  });
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+  ScrollTrigger.refresh();
+}
+locomotiveAnimation();
 
 var tl = gsap.timeline();
 tl.from("nav .part1 h2", {
@@ -29,21 +50,22 @@ var h2 = document.querySelector("#about .div2 h2");
 clutterMaking(h2);
 gsap.from("#about .div2 h2 span", {
     opacity: 0,
-    stagger: 0.1,
+    stagger: 0.12,
     scrollTrigger: ("#about .div2 h2 span", {
         trigger: "#about .div2 h2 span",
-        scroller: "body",
+        scroller: "#main",
         start: "top 70%",
         end: "top 50%",
         scrub: 1
     })
 })
+
 gsap.from("#about .div2 p", {
     x: -30,
     opacity: 0,
     scrollTrigger: ("#about .div2 p", {
         trigger: "#about .div2 p",
-        scroller: "body",
+        scroller: "#main",
         start: "top 70%"
     })
 })
@@ -55,7 +77,7 @@ gsap.from("#page3 .div2 h2 span", {
     stagger: 0.03,
     scrollTrigger: ("#page3 .div2 h2 span", {
         trigger: "#page3 .div2 h2 span",
-        scroller: "body",
+        scroller: "#main",
         start: "top 70%",
         end: "top 50%",
         scrub: 1
@@ -67,7 +89,7 @@ function animateLeft(content) {
         x: -50,
         opacity: 0,
         scrollTrigger: (content, {
-            scroller: "body",
+            scroller: "#main",
             trigger: content,
             start: "top 65%",
             end: "top 75%",
@@ -80,7 +102,7 @@ function animateRight(content) {
         x: 50,
         opacity: 0,
         scrollTrigger: (content, {
-            scroller: "body",
+            scroller: "#main",
             trigger: content,
             start: "top 70%",
             end: "top 80%",
