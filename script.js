@@ -83,7 +83,6 @@ function animateRight(content){
             trigger: content,
             start: "top 90%",
             end: "top 40%",
-            markers: true,
             scrub: 1
         })
     })
