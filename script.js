@@ -97,4 +97,3 @@ animateLeft("#project .wrapper .row .second");
 animateRight("#project .wrapper .row .third");
 animateLeft("#project .wrapper .row .fourth");
 animateLeft("#contact .left");
-animateRight("#contact .right");
