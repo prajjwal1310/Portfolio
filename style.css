@@ -82,6 +82,7 @@ nav .part2 a:hover::after {
     height: 50vw;
     border-radius: 50%;
     overflow: hidden;
+    border: 2px solid white;
 }
 #page1 .img-part .wrap img {
     width: 100%;
